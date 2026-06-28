@@ -6,8 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THERE IS FEAR IN YOUR HEART</title>
 </head>
+
+<audio id="myAudio">
+    <source src="audio/bell.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    window.onload = function() {
+    setTimeout(function() {
+        document.getElementById('myAudio').play()
+        .catch(error => {
+            console.log("autoplay blocked.");
+        });
+    }, 15000);
+    };
+</script>
+
 <body>
-    my soul weeps for you
+    lost in thought <br>
+    the writer sleeps <br>
+    too early, as the pen weeps <br>
+    bloom in my arms <br>
+    a moment of ecstasy <br>
+    <br>
+    he pondered upon who he was before, <br>
+    taking a breath before counting to four <br>
+    the pages turned without his behest <br>
+    what a mess.
 </body>
 </html>
 
