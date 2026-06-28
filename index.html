@@ -1,61 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THERE IS FEAR IN YOUR HEART</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 
-<audio id="myAudio">
-    <source src="audio/bell.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-    window.onload = function() {
-    setTimeout(function() {
-        document.getElementById('myAudio').play()
-        .catch(error => {
-            console.log("autoplay blocked.");
-        });
-    }, 15000);
-    };
-</script>
-
 <body>
-    shall i present to you what <br>
-    we call a canvas <br>
-    paint it with color <br>
-    it shows a carcass <br>
-    <br>
-    with each stroke <br>
-    the canvas withers <br>
-    the rotting aroma <br>
-    constantly lingers <br>
-    what a mess.
+    <audio id="myAudio">
+        <source src="audio/bell.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="infinity-container">
+        <div class="vessel-text">
+            <p id="vessel" class="hidden"></p>
+        </div>
+        <input type="text" id="infinity-input" class="hidden"/>
+    </div>
+
+    <script>
+        // elements
+        const textWrapper = document.querySelector('.vessel-text');
+        const textElement = document.getElementById('vessel');
+        const input = document.getElementById('infinity-input');
+        const container = document.getElementById('infinity-container');
+    
+        // difference
+        const firstTimePhrases = [
+            "",
+            "how did you find this place?",
+            "you shouldn't even be here",
+            "i hope you realize that",
+            "you are not safe here",
+            "what do you want from me?"
+        ];
+
+        const returningPhrases = [
+            "",
+            "you came back",
+            "do you not realize the consequences of your actions?",
+            "you will know soon enough",
+            "i look forward to your demise",
+            "why do you keep looking?"
+        ];
+
+        // track state via localStorage
+        const boxSeenBefore = localStorage.getItem('vessel_box_seen') === 'true';
+        const phrases = boxSeenBefore ? returningPhrases : firstTimePhrases;
+
+        let phraseIndex = 0;
+        let textInterval; 
+        let userHasTyped = false; 
+    
+        textElement.textContent = phrases[phraseIndex];
+
+        // text initial entry: The screen stays black for exactly 30 seconds for both timelines
+        setTimeout(() => {
+            if (!userHasTyped) {
+                textWrapper.classList.remove('hidden'); // Fades in the first phrase seamlessly
+                startTextSequence();
+            }
+        }, 30000);
+    
+        function startTextSequence() {
+            textInterval = setInterval(() => {
+                if (phraseIndex >= phrases.length - 1) {
+                    clearInterval(textInterval);
+                    triggerTextBoxManifestation();
+                    return;
+                }
+    
+                textWrapper.classList.add('hidden');
+    
+                setTimeout(() => {
+                    if (!userHasTyped) {
+                        phraseIndex++;
+                        textElement.textContent = phrases[phraseIndex];
+                        
+                        setTimeout(() => {
+                            if (!userHasTyped) {
+                                textWrapper.classList.remove('hidden');
+                            }
+                        }, 10000);
+                    }
+                }, 1500); 
+    
+            }, 21500); 
+        }
+
+        function triggerTextBoxManifestation() {
+            if (!boxSeenBefore) {
+                localStorage.setItem('vessel_box_seen', 'true');
+            }
+
+            input.classList.remove('hidden');
+            isAnimating = true;
+            animate();
+
+            document.getElementById('myAudio').play()
+            .catch(error => {
+                console.log("autoplay blocked. Interaction required.");
+            });
+
+            document.body.style.backgroundColor = "#ffffff";
+            textElement.style.color = "#000000";
+        }
+
+        // input listener
+        input.addEventListener('input', (event) => {
+            userHasTyped = true;
+            clearInterval(textInterval); 
+            
+            const userInput = event.target.value.toLowerCase().trim();
+            let response = phrases[phrases.length - 1]; // default fallback matches timeline choice
+    
+            if (userInput.includes('hello') || userInput.includes('hi')) {
+                response = "i hear you";
+            } else if (userInput.includes('who are you')) {
+                response = boxSeenBefore ? "someone you already met" : "an ode";
+            } else if (userInput.includes('sorry')) {
+                response = "it's too late for apologies";
+            } else if (userInput.includes('help')) {
+                response = "with what?";
+            } else if (userInput.includes('vessel')) {
+                response = "stay away";
+            } else if (userInput.includes('integrity')) {
+                response = "not a fan";
+            } else if (userInput.includes('kindness')) {
+                response = "whatever you say about her, she exudes an unsettling aura no matter what";
+            } else if (userInput.includes('bravery')) {
+                response = "a fate worse than death i'm afraid";
+            } else if (userInput.includes('perseverance')) {
+                response = "a good friend of mine";
+            } else if (userInput.includes('justice')) {
+                response = "being blinded by your own ideals is idiocy at its finest";
+            } else if (userInput.includes('patience')) {
+                response = "...";
+            } else if (userInput.includes('romeo')) {
+                response = "who?";
+            } else if (userInput.includes('determination')) {
+                response = "history truly repeats itself";
+            } else if (userInput.includes('fear in your heart')) {
+                response = "you think so?";
+            } else if (userInput.includes('prophecy')) {
+                response = "...";
+            } else if (userInput.includes('osmium')) {
+                response = "look somewhere else";
+            } else if (userInput.includes('red herring')) {
+                response = "thank you for your cooperation";
+            } else if (userInput.includes('the people below')) {
+                response = "they are watching as we converse";
+            } else if (userInput.length > 20) {
+                response = "too much";
+            } else {
+                response = phrases[phraseIndex];
+            }
+    
+            if (textElement.textContent !== response) {
+                textWrapper.style.opacity = 0;
+                setTimeout(() => {
+                    textElement.textContent = response;
+                    textWrapper.style.opacity = 1;
+                }, 200); 
+            }
+        });
+    
+        // animation loops
+        const radius = 200;      
+        const speed = 0.005;     
+        let tx = Math.random() * 1000;
+        let ty = Math.random() * 1000;
+        let isAnimating = false;
+    
+        function animate() {
+            if (!isAnimating) return;
+    
+            const x = Math.sin(tx) * Math.cos(tx * 0.6) * radius;
+            const y = Math.sin(ty) * Math.cos(ty * 0.7) * radius;
+    
+            container.style.left = `calc(50% + ${x}px)`;
+            container.style.top = `calc(50% + ${y}px)`;
+    
+            tx += speed;
+            ty += speed * 0.85; 
+    
+            requestAnimationFrame(animate);
+        }
+    </script>
 </body>
 </html>
-
-<!-- 
-
-and then i saw it
-
-a path
-
-an exit
-
-something that i yearned for these past few eons
-
-perhaps there is way
-
-to stop this prophecy once and for all
-
-...
-
-or maybe it's just wishful thinking
-
-the people below cannot know
-
-is that not right, my friend?
-
--->
