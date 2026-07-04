@@ -205,7 +205,7 @@ function runVesselEngine() {
         } else if (userInput.includes('romeo')) {
             if (visitCount === 1) response = "who?";
             else if (visitCount === 2) response = "i don't know who you're talking about";
-            else response = "thank you";
+            else response = "you don't know what's coming";
         
         } else if (userInput.includes('determination')) {
             if (visitCount === 1) response = "history truly repeats itself";
@@ -241,6 +241,45 @@ function runVesselEngine() {
             if (visitCount === 1) response = "a place beneath the surface";
             else if (visitCount === 2) response = "the next step";
             else response = "but where does it go?";
+
+        } else if (userInput.includes('ode')) {
+            response = "that's me";
+
+        } else if (userInput.includes('death')) {
+            response = "not a problem";
+
+        } else if (userInput.includes('close your eyes')) {
+            response = "you're not supposed to know that";
+
+        } else if (userInput.includes('my eyes are closed')) {
+            response = "then the next time you perish, you will be granted a gift";
+
+        } else if (userInput.includes('where are you')) {
+            response = "above";
+
+        } else if (userInput.includes('can you hear me')) {
+            response = "i hear you";
+
+        } else if (userInput.includes('monroe')) {
+            response = "murderer";
+
+        } else if (userInput.includes('mint')) {
+            response = "pawn";
+
+        } else if (userInput.includes('valk')) {
+            response = "fool";
+
+        } else if (userInput.includes('midas')) {
+            response = "assimilated";
+
+        } else if (userInput.includes('the world unseen')) {
+            response = "you aren't supposed to know that";
+
+        } else if (userInput.includes('stuck in between')) {
+            response = "you aren't supposed to know that";
+
+        } else if (userInput.includes('grant me salvation')) {
+            response = "chant my name three times into the box of text on stage";
 
         } else if (userInput.includes('clancy')) {
             if (visitCount === 1) response = "███ ████ ███ █████ ████ ████";
