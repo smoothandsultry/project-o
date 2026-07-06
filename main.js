@@ -15,11 +15,11 @@ const input = document.getElementById('infinity-input');
 const container = document.getElementById('infinity-container');
 
 if (localStorage.getItem('vessel_shattered') === 'true') {
-    document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color: #000000; letter-spacing: 1px; text-align: center;">best of luck for the big day</div>';
+    document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color: #000000; letter-spacing: 1px; text-align: center;">did you enjoy the show?</div>';
     document.body.style.backgroundColor = "#ffffff";
 } else {
     // runVesselEngine();
-    document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color: #611580; letter-spacing: 1px; text-align: center;">enjoy the show</div>';
+    document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color: #611580; letter-spacing: 1px; text-align: center;">...</div>';
     document.body.style.backgroundColor = "#ffffff";
 }
 
