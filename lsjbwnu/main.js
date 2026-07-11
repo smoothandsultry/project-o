@@ -33,7 +33,6 @@ function animate() {
 	frame = requestAnimationFrame(animate);
 };
 
-// Glitch
 for (i = 0; i < 4; i++) {
 	var span = text.firstElementChild.cloneNode(true);
 	text.appendChild(span);
