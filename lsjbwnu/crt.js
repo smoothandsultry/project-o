@@ -1,71 +1,77 @@
 var main = document.querySelector('main'),
-	canvas = document.getElementById('canvas'),
-	ctx = canvas.getContext('2d'),
-	text = document.querySelector('.text'),
-	ww = window.innerWidth,
-	menu = document.querySelector('.menu'),
-	ul = menu.querySelector('ul'),
-	idx = 0,
-	count = ul.childElementCount - 1,
-	toggle = true,
-	frame;
+    canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d'),
+    text = document.querySelector('.text'),
+    ww = window.innerWidth,
+    menu = document.querySelector('.menu'),
+    ul = menu.querySelector('ul'),
+    idx = 0,
+    // Target 'li' tags directly to ignore structural tags like <center>
+    lis = ul.querySelectorAll('li'), 
+    count = lis.length - 1,
+    toggle = true,
+    frame;
 
 canvas.width = ww / 3;
 canvas.height = (ww * 0.5625) / 3;
 
 function snow(ctx) {
+    var w = ctx.canvas.width,
+        h = ctx.canvas.height,
+        d = ctx.createImageData(w, h),
+        b = new Uint32Array(d.data.buffer),
+        len = b.length;
 
-	var w = ctx.canvas.width,
-		h = ctx.canvas.height,
-		d = ctx.createImageData(w, h),
-		b = new Uint32Array(d.data.buffer),
-		len = b.length;
+    for (var i = 0; i < len; i++) {
+        // Fix: Added 255 for the full alpha channel so the noise isn't transparent
+        b[i] = ((255 * Math.random()) | 0) | (255 << 24); 
+    }
 
-	for (var i = 0; i < len; i++) {
-		b[i] = ((255 * Math.random()) | 0) << 24;
-	}
-
-	ctx.putImageData(d, 0, 0);
+    ctx.putImageData(d, 0, 0);
 }
 
 function animate() {
-	snow(ctx);
-	frame = requestAnimationFrame(animate);
-};
+    snow(ctx);
+    frame = requestAnimationFrame(animate);
+}
 
-for (i = 0; i < 4; i++) {
-	var span = text.firstElementChild.cloneNode(true);
-	text.appendChild(span);
+// Fix: Declared 'var i' explicitly to prevent execution crashes
+for (var i = 0; i < 4; i++) { 
+    var span = text.firstElementChild.cloneNode(true);
+    text.appendChild(span);
 }
 
 window.addEventListener('DOMContentLoaded', function(e) {
-	setTimeout(function() {
-		main.classList.add('on');
-		main.classList.remove('off');
-		animate();
-	}, 1000);
+    setTimeout(function() {
+        if (main) {
+            main.classList.add('on');
+            main.classList.remove('off');
+        }
+        animate();
+    }, 1000);
 });
 
 window.addEventListener('keydown', function(e) {
-	var key = e.keyCode;
-	var prev = idx;
-	if (key == 38 || key == 40) {
-		e.preventDefault();
+    var key = e.keyCode;
+    var prev = idx;
+    if (key == 38 || key == 40) {
+        e.preventDefault();
 
-		switch (key) {
-			case 38:
-				if (idx > 0) {
-					idx--;
-				}
-				break;
-			case 40:
-				if (idx < count) {
-					idx++;
-				}
-				break;
-		}
+        switch (key) {
+            case 38:
+                if (idx > 0) {
+                    idx--;
+                }
+                break;
+            case 40:
+                if (idx < count) {
+                    idx++;
+                }
+                break;
+        }
 
-		ul.children[prev].classList.remove('active');
-		ul.children[idx].classList.add('active');
-	}
+        // Use the safe array reference that bypasses <center> wrappers
+        lis[prev].classList.remove('active');
+        lis[idx].classList.add('active');
+    }
 }, false);
