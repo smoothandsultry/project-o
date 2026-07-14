@@ -336,3 +336,83 @@ body {
         transform: skew(0, 0);
    }
 }
+/* Update your existing .login-screen rules with these opacity transitions */
+.login-screen {
+    opacity: 0; /* Starts invisible during the power-on static scaling */
+    background-color: #0069ff;
+    box-sizing: border-box;
+    font-family: "Sys", monospace;
+    font-size: 32px;
+    height: auto;
+    width: 35%;
+    padding: 20px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    filter: blur(0.5px);
+    color: #fff;
+    animation: jerkup 100ms infinite;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    
+    /* Smooth transition matching the menu appearance */
+    transition: opacity 10ms ease 3000ms; 
+}
+
+/* When the CRT turns 'on', transition the login screen into view */
+.on .login-screen {
+    opacity: 1;
+}
+
+/* Helper to hide elements completely once submitted */
+.hidden {
+    display: none !important;
+}
+
+/* --- Rest of your custom login styles --- */
+.login-screen header {
+    color: #e7e05c;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dashed #fff;
+    padding-bottom: 5px;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.input-group label {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.login-screen input[type="password"] {
+    background-color: #1b2838;
+    border: 3px solid #2afd72;
+    color: #2afd72;
+    font-family: "Sys", monospace;
+    font-size: 24px;
+    padding: 10px;
+    outline: none;
+    text-shadow: 0 0 5px #2afd72;
+}
+.login-screen button {
+    background-color: #2afd72;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-family: "Sys", monospace;
+    font-size: 24px;
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.login-screen button:hover {
+    background-color: #e7e05c;
+}
+.error-msg {
+    color: #ff3333;
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 24px;
+}

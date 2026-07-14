@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOT NOW</title>
-    <link rel="stylesheet" href="/lsjbwnu/style.css"> 
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <main class="scanlines">
@@ -13,19 +13,36 @@
             <div class="overlay">
                 <div class="text">
                     <span>VSL-1</span>
-                    
                 </div>
-                <div class="menu">
+                <div class="login-screen" id="loginScreen">
+                    <header>SYSTEM LOGIN</header>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="password">ENTER PASSKEY:</label>
+                            <input type="password" id="password" autocomplete="off" required>
+                        </div>
+                        <button type="submit">ACCESS</button>
+                    </form>
+                    <div id="loginError" class="error-msg"></div>
+                </div>
+                <div class="menu hidden" id="mainMenu">
+                    <header>
+                        PROJECT O
+                    </header>
                     <ul>
-                        <center><li class="active"><a href="#" title="">NO SIGNAL</a></li></center>
+                        <li class="active"><a href="#" title="">PROPHECIED</a></li>
+                        <li><a href="#" title="">----</a></li>
+                        <li><a href="#" title="">----</a></li>
+                        <li><a href="#" title="">----</a></li>
                     </ul>
+                    <footer>
+                        <div class="key">Select: <span>1</span></div>
+                        <div class="key">Exit: <span>2</span></div>
+                    </footer>
                 </div>
             </div>
         </div>
     </main>
-    <script src="/lsjbwnu/crt.js" defer></script>
+    <script src="crt.js"></script>
 </body>
 </html>
-
-<!-- you are unfortunately far too early, come back another time, and i shall grant you the pieces that you need. -->
-<!-- moving forward, there shall no be mysteries hidden within these lines, for i wish for your experience to be linear no matter what. -->
