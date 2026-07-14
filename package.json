@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "build": "echo 'Skipping build compilation...'"
-  },
+  "dev": "vite", 
+  "start": "node app.js"
+},
   "devDependencies": {
     "vite": "^8.1.0"
   }

@@ -338,7 +338,7 @@ body {
 }
 /* Update your existing .login-screen rules with these opacity transitions */
 .login-screen {
-    opacity: 0; /* Starts invisible during the power-on static scaling */
+    opacity: 0;
     background-color: #0069ff;
     box-sizing: border-box;
     font-family: "Sys", monospace;
@@ -353,11 +353,9 @@ body {
     animation: jerkup 100ms infinite;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     
-    /* Smooth transition matching the menu appearance */
     transition: opacity 10ms ease 3000ms; 
 }
 
-/* When the CRT turns 'on', transition the login screen into view */
 .on .login-screen {
     opacity: 1;
 }
