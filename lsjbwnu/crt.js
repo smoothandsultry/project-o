@@ -49,12 +49,11 @@ window.addEventListener('DOMContentLoaded', function(e) {
 	}, 1000);
 });
 
-// --- NEW LOGIN LOGIC ---
 var loginForm = document.getElementById('loginForm');
 var loginScreen = document.getElementById('loginScreen');
 var mainMenu = document.getElementById('mainMenu');
 var loginError = document.getElementById('loginError');
-var isAuthenticated = false; // Prevents keyboard navigation before logging in
+var isAuthenticated = false;
 
 loginForm.addEventListener('submit', function(e) {
 	e.preventDefault();
@@ -73,7 +72,6 @@ loginForm.addEventListener('submit', function(e) {
 	}
 });
 
-// Add this snippet inside your crt.js file
 
 window.addEventListener('DOMContentLoaded', function(e) {
 	setTimeout(function() {
@@ -82,18 +80,16 @@ window.addEventListener('DOMContentLoaded', function(e) {
 		animate();
 	}, 1000);
 
-	// NEW: Automatically focus password box right when the fade-in completes
 	setTimeout(function() {
 		var passwordInput = document.getElementById('password');
 		if (passwordInput) {
 			passwordInput.focus();
 		}
-	}, 3000); // 1000ms delay + 2000ms transition = 3000ms total
+	}, 3000);
 });
 
-// Keyboard Menu Navigation (Only trigger if user is authenticated)
 window.addEventListener('keydown', function(e) {
-	if (!isAuthenticated) return; // Ignores navigation inputs until logged in
+	if (!isAuthenticated) return;
 
 	var key = e.keyCode;
 	var prev = idx;

@@ -1,0 +1,257 @@
+body {
+	position: absolute;
+	margin: 0;
+	inset: 0px;
+	display: grid;
+	place-items: center;
+}
+
+h1 {
+	text-align: center;
+	font-family: Courier, Lucida Sans Typewriter, Lucida;
+	font-size: clamp(40px, 5.091vw + 19.636px, 36px);
+	max-width: 12ch;
+	text-wrap: balance;
+}
+
+.background {
+	--heading-1: "Heroes are Summoned Upon the Horizon";
+	--heading-2: "Wield Your Integrity";
+	--heading-3: "Spread Kindness";
+	--heading-4: "Enact Justice";
+	--heading-5: "Embrace Bravery";
+	--heading-6: "I DO NOT KNOW ABOUT PATIENCE";
+	--heading-7: "Stay Determined";
+	--heading-8: "Have Perseverance";
+	--heading-9: "The Prophecy Rings True";
+	--heading-10: "The Calamity Strikes";
+
+	--body-1: "RED DRAPES OVER THE CLEAR BLUE SKIES. BENEATH THE LABYRINTH, THE VESSEL LIES. DORMANT, WAITING FOR HEROES TO BE AWAKENED. TO SAVE US FROM SALVATION, TO FREE US FROM THE END.";
+
+	--body-2: "FIVE POOR SOULS TO BE SENT TO THIS WORLD. TO ACT OUT THE PROPHECY, THE SCRIPT UNFURLED. TO UNVEIL THE SECRETS OF THIS FANTASY. TO BREAK THROUGH THE WALLS OF EMERY.";
+
+	--body-3: "THE VESSEL REMAINS STILL UNTIL THE TIME IS NIGH. ANOTHER CONNECTION, AWAITING FOR A REPLY. FOR THEIR END IS A SACRIFICE FOR THE WORLD UNSEEN. TO BE REDUCED TO NOTHING, TO BE STUCK IN BETWEEN.";
+
+	--body-4: "THE END IS NOTHING BUT A TRAGEDY TO BE PLAYED. THERE ARE NO HAPPY ENDINGS FOR THE CHOICES MADE. A NONBELIEVER STRIKES, ANIMOSITY ENSUES. THE SKY BURNS AND CRAMS WITH BLUES.";
+
+	--body-5: "THE VESSEL TRAGICALLY CEASES LIVING AT THE BEHEST OF THE NONBELIEVER. AND THE CYCLE CONTINUES.";
+
+	position: fixed;
+	inset: 0;
+
+	height: 100%;
+	max-width: 100%;
+	padding: 1.5rem;
+	box-sizing: border-box;
+
+	column-width: 160px;
+	column-gap: 3rem;
+	column-rule: 1px solid rgba(0, 0, 0, 0.35);
+	column-fill: auto;
+
+	overflow: hidden;
+
+	opacity: 0.25;
+
+	font-family: "Times New Roman", serif;
+	font-size: 8px;
+	line-height: 1.35;
+	text-align: justify;
+
+	pointer-events: none;
+}
+
+.background > div {
+	margin-bottom: 1.25rem;
+}
+
+
+
+/*
+	Heading content cycle:
+	1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → repeat
+*/
+
+.background > div:nth-child(10n + 1)::before {
+	content: var(--heading-1);
+}
+
+.background > div:nth-child(10n + 2)::before {
+	content: var(--heading-2);
+}
+
+.background > div:nth-child(10n + 3)::before {
+	content: var(--heading-3);
+}
+
+.background > div:nth-child(10n + 4)::before {
+	content: var(--heading-4);
+}
+
+.background > div:nth-child(10n + 5)::before {
+	content: var(--heading-5);
+}
+
+.background > div:nth-child(10n + 6)::before {
+	content: var(--heading-6);
+}
+
+.background > div:nth-child(10n + 7)::before {
+	content: var(--heading-7);
+}
+
+.background > div:nth-child(10n + 8)::before {
+	content: var(--heading-8);
+}
+
+.background > div:nth-child(10n + 9)::before {
+	content: var(--heading-9);
+}
+
+.background > div:nth-child(10n)::before {
+	content: var(--heading-10);
+}
+
+
+.background > div::before {
+	display: block;
+
+	margin-bottom: 0.4rem;
+
+	font-size: 9px;
+	font-weight: bold;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-align: left;
+}
+
+
+.background > div::after {
+	content: var(--body-1);
+}
+
+.background > div:nth-child(4n + 2)::after {
+	content: var(--body-2);
+}
+
+.background > div:nth-child(6n + 3)::after {
+	content: var(--body-3);
+}
+
+
+/*
+	Continuation paragraphs
+*/
+
+.background > div:nth-child(5)::before,
+.background > div:nth-child(9)::before,
+.background > div:nth-child(16)::before,
+.background > div:nth-child(22)::before {
+	content: "";
+}
+
+.background > div:nth-child(5)::after {
+	content: var(--body-4);
+}
+
+.background > div:nth-child(9)::after {
+	content: var(--body-5);
+}
+
+.background > div:nth-child(16)::after {
+	content: var(--body-2) " " var(--body-4);
+}
+
+.background > div:nth-child(22)::after {
+	content: var(--body-3) " " var(--body-5);
+}
+
+
+/*
+	Heading style variations
+*/
+
+.background > div:nth-child(3n + 1)::before {
+	font-size: 8px;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+}
+
+.background > div:nth-child(7n + 3)::before {
+	font-size: 12px;
+	font-weight: 900;
+	letter-spacing: 0.03em;
+	text-transform: none;
+	line-height: 1.1;
+}
+
+.background > div:nth-child(11n + 5)::before {
+	font-size: 7px;
+	font-weight: 900;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.background > div:nth-child(13n + 4)::before {
+	font-size: 10px;
+	font-style: italic;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+}
+
+.background > div:nth-child(17n + 7)::before {
+	font-size: 15px;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	line-height: 1;
+}
+
+.background > div:nth-child(19n + 2)::before {
+	font-size: 9px;
+	font-weight: bold;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+}
+
+
+/*
+	Body style variations
+*/
+
+.background > div:nth-child(8n + 4)::after {
+	font-size: 7px;
+	line-height: 1.45;
+}
+
+.background > div:nth-child(10n + 6)::after {
+	font-size: 9px;
+	line-height: 1.25;
+}
+
+.background > div:nth-child(15n + 8)::after {
+	text-align: left;
+}
+
+
+/*
+	Feature articles
+*/
+
+.background > div:nth-child(14)::after,
+.background > div:nth-child(25)::after {
+	content: var(--body-3) " " var(--body-5) " " var(--body-1);
+}
+
+
+/*
+	Spacing variations
+*/
+
+.background > div:nth-child(9n + 1) {
+	margin-bottom: 2rem;
+}
+
+.background > div:nth-child(12n + 4) {
+	margin-bottom: 0.75rem;
+}
