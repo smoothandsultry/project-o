@@ -3,17 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html, body {font-size: 12px;margin: 0;padding: 10px;font-family: Courier, Lucida Sans Typewriter, Lucida;font-weight: 600;letter-spacing: .15em;}
-    </style>
+    <title>NOT NOW</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
-
 <body>
-    <p>
-        what defines the worth of someone's life?
-    </p>
-    <p>
-        i've grown dreary of this topic, let us move on.
-    </p>
+    <main class="scanlines">
+        <div class="screen">
+            <canvas id="canvas" class="picture"></canvas>
+            <div class="overlay">
+                <div class="text">
+                    <span>VSL-1</span>
+                </div>
+                <div class="login-screen" id="loginScreen">
+                    <header>SYSTEM LOGIN</header>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="password">ENTER PASSKEY:</label>
+                            <input type="password" id="password" autocomplete="off" required>
+                        </div>
+                        <button type="submit">ACCESS</button>
+                    </form>
+                    <div id="loginError" class="error-msg"></div>
+                </div>
+                <div class="menu hidden" id="mainMenu">
+                    <header>
+                        YOU SHOULD NOT BE HERE
+                    </header>
+                    <ul>
+                        <li class="active"><a href="#" title="">FILTHY CHEATER</a></li>
+                        <li><a href="#" title="">FILTHY CHEATER</a></li>
+                        <li><a href="#" title="">FILTHY CHEATER</a></li>
+                        <li><a href="#" title="">FILTHY CHEATER</a></li>
+                    </ul>
+                    <footer>
+                        <div class="key">Select: <span>1</span></div>
+                        <div class="key">Exit: <span>2</span></div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="crt.js"></script>
 </body>
 </html>
+
+<!-- your answers are not here -->

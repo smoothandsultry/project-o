@@ -10,11 +10,9 @@ var main = document.querySelector('main'),
 	toggle = true,
 	frame;
 
-// Set canvas size
 canvas.width = ww / 3;
 canvas.height = (ww * 0.5625) / 3;
 
-// Generate CRT noise
 function snow(ctx) {
 	var w = ctx.canvas.width,
 		h = ctx.canvas.height,
@@ -40,7 +38,6 @@ for (var i = 0; i < 4; i++) {
 	text.appendChild(span);
 }
 
-// Power on the CRT monitor
 window.addEventListener('DOMContentLoaded', function(e) {
 	setTimeout(function() {
 		main.classList.add('on');
