@@ -18,9 +18,7 @@ if (localStorage.getItem('vessel_shattered') === 'true') {
     document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color: #000000; letter-spacing: 1px; text-align: center;">did you enjoy the show?</div>';
     document.body.style.backgroundColor = "#ffffff";
 } else {
-    // runVesselEngine();
-    document.body.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: sans-serif; font-size: 18px; color:rgb(0, 0, 0); letter-spacing: 1px; text-align: center;">...</div>';
-    document.body.style.backgroundColor = "#ffffff";
+    runVesselEngine();
 }
 
 function runVesselEngine() {

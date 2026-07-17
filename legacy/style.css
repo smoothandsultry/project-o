@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Bulletproof Centering & Reset
+   ========================================================================== */
+
+   :root {
+    --bg-color: #050505;
+    --text-color: #d8d8d8;
+    --vessel-glow: rgba(255, 255, 255, 0.05);
+    --input-color: #a0a0a0;
+    --font-stack: 'Courier New', Courier, monospace;
+}
+
+/* Force-reset everything to prevent hidden browser margins */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--text-color);
+    background-image: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.9) 100%);
+    position: relative;
+}
+
+/* ==========================================================================
+   Absolute Center Container
+   ========================================================================== */
+
+#infinity-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Moves exactly back by half its own size to perfectly center */
+    
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   Text & Input Layouts
+   ========================================================================== */
+
+.vessel-text {
+    width: 100%;
+    min-height: 80px;
+    display: block; /* Simpler display to avoid flex shifts */
+    text-align: center;
+    transition: opacity 1.5s ease-in-out, filter 1.5s ease-in-out;
+}
+
+#vessel {
+    display: inline-block;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-shadow: 0 0 10px var(--vessel-glow);
+    margin: 0 auto;
+    text-align: center;
+}
+
+#vessel img.vessel-image {
+    max-width: 100%;
+    max-height: 350px;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    opacity: 0.9;
+}
+
+#infinity-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #222;
+    color: var(--input-color);
+    font-family: var(--font-stack);
+    font-size: 1rem;
+    text-align: center;
+    padding: 8px;
+    width: 250px;
+    outline: none;
+    letter-spacing: 2px;
+    transition: border-color 1s ease, box-shadow 1s ease, opacity 0.8s ease-in-out;
+    margin: 0 auto;
+}
+
+#infinity-input:focus {
+    border-color: #555;
+    box-shadow: 0 1px 10px rgba(255, 255, 255, 0.05); 
+}
+
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+    filter: blur(4px);
+}
