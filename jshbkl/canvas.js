@@ -34,11 +34,17 @@ WindowResize();
 window.onresize=function(){WindowResize();}
 function RopeIni(){
     RopeList = [];
-    var Rope = [];
-    for(var i = 0; i < 20; i++){
-        Rope.push({ x: 0, y: LengthLength * i, vx: 0, vy: 0 });
+    
+    var xPositions = [-2, 2];
+
+    for(var listi = 0; listi < xPositions.length; listi++){
+        var Rope = [];
+        var startX = xPositions[listi];
+        for(var i = 0; i < 20; i++){
+            Rope.push({ x: startX, y: LengthLength * i, vx: 0, vy: 0 });
+        }
+        RopeList.push(Rope);
     }
-    RopeList.push(Rope);
 }
 RopeIni();
 function PhysicalChange(){
