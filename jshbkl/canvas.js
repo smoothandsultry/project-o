@@ -35,7 +35,7 @@ window.onresize=function(){WindowResize();}
 function RopeIni(){
     RopeList = [];
     
-    var xPositions = [-2, 2];
+    var xPositions = [-3, 0, 3];
 
     for(var listi = 0; listi < xPositions.length; listi++){
         var Rope = [];
