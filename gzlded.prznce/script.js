@@ -27,7 +27,8 @@ const nodeLogs = {
     "Jie": [
         { text: "Reminds me of Jiang Min, looks-wise at least. Definitely not personality-wise." },
         { text: "There is something odd that happens whenever I am around her. I want to experiment with this feeling while it exists in the moment. <br><br>I suppose I can simply pose it as 'wanting to get closer to her'." },
-        { text: "The feeling is still there, unmoving like a stain stuck on your favorite shirt. I am still unsure how to make of it, so I shall continue.<br><br> The romantic context of my pursuit that haunts the narrative shouldn't exist anymore, I suppose. It was a fluke." }
+        { text: "The feeling is still there, unmoving like a stain stuck on your favorite shirt. I am still unsure how to make of it, so I shall continue.<br><br> The romantic context of my pursuit that haunts the narrative shouldn't exist anymore, I suppose. It was a fluke." },
+        { text: "She seems like a person who likes prying, not necessarily in a bad way. Moreso curious? I answered some of her questions and she kept asking more.<br><br>I'll tolerate it for now, but it's odd that I am able to speak about my history that smoothly. I suppose that is what it's like when you talk to charismatic people?" }
     ],
     "Bonzo": [
         { text: "A happy-go-lucky trainer who enjoys battling." },
