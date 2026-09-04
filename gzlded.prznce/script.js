@@ -17,25 +17,29 @@ const nodeDirections = [
 const nodeLogs = {
     "Myself": [
         { text: "I look into the mirror and see myself from all those years ago.<br><br>The idea of it all still makes me sick, but I suppose change does not come overnight." },
-        { text: "It has been a year since I have confronted my wrongs, but it doesn't get any better past a certain point. <br><br>I'll keep going just for her." }
+        { text: "It has been a year since I have confronted my wrongs, but it doesn't get any better past a certain point. <br><br>I'll keep going just for her." },
+        { text: "Is it alright to feel happy when the sins of your past weigh you down like an anchor? I caught some today, but I cannot give them names. They are numbered, just as the others are. I do not want this to keep happening." }
     ],
     "Lottie": [
         { text: "A person who enjoys positive words sprouted from the depths of their hearts." },
         { text: "A friend? Something of the sort.<br><br>I personally am not too fond of her because of her friendliness, but I figured I should mirror her to see where it goes. This kind of friendliness is the kind that can make or break people.<br><br>A part of me still wants to believe she has no ill intent." },
+        { text: "I was right, but I genuinely wonder how fragile her heart really is. Maybe I am doing something wrong?<br><br>Nonetheless, she wants to get stronger. I suppose I can teach her a few tricks just to get by." }
 
     ],
     "Jie": [
         { text: "Reminds me of Jiang Min, looks-wise at least. Definitely not personality-wise." },
         { text: "There is something odd that happens whenever I am around her. I want to experiment with this feeling while it exists in the moment. <br><br>I suppose I can simply pose it as 'wanting to get closer to her'." },
         { text: "The feeling is still there, unmoving like a stain stuck on your favorite shirt. I am still unsure how to make of it, so I shall continue.<br><br> The romantic context of my pursuit that haunts the narrative shouldn't exist anymore, I suppose. It was a fluke." },
-        { text: "She seems like a person who likes prying, not necessarily in a bad way. Moreso curious? I answered some of her questions and she kept asking more.<br><br>I'll tolerate it for now, but it's odd that I am able to speak about my history that smoothly. I suppose that is what it's like when you talk to charismatic people?" }
+        { text: "She seems like a person who likes prying, not necessarily in a bad way. Moreso curious? I answered some of her questions and she kept asking more.<br><br>I'll tolerate it for now, but it's odd that I am able to speak about my history that smoothly. I suppose that is what it's like when you talk to charismatic people?" },
+        { text: "The sound of laughter left my mouth for the first time in a long time. I suppose people really are drawn to charismatic people.<br><br>It felt wrong to laugh, but if I could, I would have kept laughing like it was my last." }
     ],
     "Bonzo": [
         { text: "A happy-go-lucky trainer who enjoys battling." },
         { text: "Sometimes I wonder if he would fit in nicely with us at Shaper. He reminds me of some of my former colleagues, though he does say he doesn't really care much about academies and such. <br><br>Sometimes whenever I look at him, a part of my being is filled with <b>envy</b>." }
     ],
     "Omar": [
-        { text: "Not much I can say, we went to the same academy together." }
+        { text: "Not much I can say, we went to the same academy together." },
+        { text: "Despite putting on quite the tough front, fear is still instilled to the heart of man. I do not blame him, but I do feel sorry for taking it as a joke when the incident happened. I wonder if things would be different if I acted more empathetic?" }
     ]
 };
 
