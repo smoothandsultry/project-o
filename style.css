@@ -1,20 +1,14 @@
 body {
-  background: black;
-  color: white;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url('/images/cognosco.png'); 
+  
+  background-size: cover; 
+  
+  background-position: center center; 
+  
+  background-repeat: no-repeat; 
+  
+  background-attachment: fixed; 
+  
+  min-height: 100vh;
+  margin: 0;
 }
-
-.container {
-  text-align: center;
-}
-
-p {
-  font-size: 2rem;
-  font-weight: bold;
-  position: relative;
-}
-

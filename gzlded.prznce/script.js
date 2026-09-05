@@ -1,144 +1,120 @@
-const heart = document.getElementById('heart');
-const container = document.getElementById('chart-container');
-const svgCanvas = document.getElementById('connections');
-const nodes = document.querySelectorAll('.node');
-
-const drawer = document.getElementById('log-drawer');
-const logTitle = document.getElementById('log-title');
-const logHistory = document.getElementById('log-history');
-
-const nodeDirections = [
-{ x: 1.2,  y: 0.8 },
-{ x: -0.9, y: 1.4 },
-{ x: -1.5, y: -0.7 },
-{ x: 0.8,  y: -1.2 }
+const lines = [
+    "i stand before the doors that i once stood before when i first started my journey as a pokemon trainer.",
+    "although it wasn't the exact same, the feeling of dread encapsulates my entire being as i remember what i wanted to forget all those times ago.",
+    "i am a victim of bad habits, and one of those bad habits is mistreating my pokemon as tools instead of friends.",
+    "i hold no understanding as to how someone like myself is capable of loving them while the stains of my mistakes are ever-present on my hands.",
+    "how does one do it? how do they do it? how do i do it?",
+    "it's hard, considering everything that i have ever loved in my life has either slipped away or let go.",
+    "it's clear that i am the problem, hence i do not feel like i can love someone or something without feeling guilty for doing so.",
+    "i feel it, and i know it. this feeling that i feel countless of times whenever i am alone.",
+    "there is <shake>fear</shake> in my heart.",
+    "but it is part of human nature at the end of the day.",
+    "maybe this fear <shake>will</shake> be what helps me push through the future, but even i am not sure of it.",
+    "it is hard to risk everything on gut feeling when my whole life has been revolving around meticulous calculations.",
+    "just this once, i'll let it <shake>decide</shake> for me, for i am also tired of my own habits overtaking me.",
+    "these past few days have been really odd, i usually am so detached, but that does not seem to be case anymore.",
+    "lottie gave me a fraction of her heart.",
+    "pyrrho told me that there are people worried for me.",
+    "jie made me laugh for the first time in so long.",
+    "even my sister took the time to have a proper conversation with me.",
+    "so why is it so hard to even be myself?",
+    "i am nothing more than a mirror, an autonomous cog in a machine that is never used for anything.",
+    "but even i want to change that.",
+    "i have been trying to, but it's obvious i'm not trying my hardest.",
+    "so, this time, i'll try my hardest.",
+    ". . .",
+    "i wish for caramel to grow better as a pokemon, so perhaps i shall use her as a mirror for myself instead.",
+    "i shall treat her with earnest like <shake>how</shake> i want people to treat me.",
+    "that shall be my starting point.",
+    "<shake>i</shake> am a victim of bad habits, but that doesn't mean people and pokemon around me should be a victim to it as well.",
+    "i want the cycle to end here.",
+    "you will <shake>heal</shake>, zephariah aurelius.",
+    "one step at a time."
 ];
 
-const nodeLogs = {
-    "Myself": [
-        { text: "I look into the mirror and see myself from all those years ago.<br><br>The idea of it all still makes me sick, but I suppose change does not come overnight." },
-        { text: "It has been a year since I have confronted my wrongs, but it doesn't get any better past a certain point. <br><br>I'll keep going just for her." },
-        { text: "Is it alright to feel happy when the sins of your past weigh you down like an anchor? I caught some today, but I cannot give them names. They are numbered, just as the others are. I do not want this to keep happening." }
-    ],
-    "Lottie": [
-        { text: "A person who enjoys positive words sprouted from the depths of their hearts." },
-        { text: "A friend? Something of the sort.<br><br>I personally am not too fond of her because of her friendliness, but I figured I should mirror her to see where it goes. This kind of friendliness is the kind that can make or break people.<br><br>A part of me still wants to believe she has no ill intent." },
-        { text: "I was right, but I genuinely wonder how fragile her heart really is. Maybe I am doing something wrong?<br><br>Nonetheless, she wants to get stronger. I suppose I can teach her a few tricks just to get by." }
+let currentIndex = 0;
+let isTyping = false;
+let activeCursor = null;
 
-    ],
-    "Jie": [
-        { text: "Reminds me of Jiang Min, looks-wise at least. Definitely not personality-wise." },
-        { text: "There is something odd that happens whenever I am around her. I want to experiment with this feeling while it exists in the moment. <br><br>I suppose I can simply pose it as 'wanting to get closer to her'." },
-        { text: "The feeling is still there, unmoving like a stain stuck on your favorite shirt. I am still unsure how to make of it, so I shall continue.<br><br> The romantic context of my pursuit that haunts the narrative shouldn't exist anymore, I suppose. It was a fluke." },
-        { text: "She seems like a person who likes prying, not necessarily in a bad way. Moreso curious? I answered some of her questions and she kept asking more.<br><br>I'll tolerate it for now, but it's odd that I am able to speak about my history that smoothly. I suppose that is what it's like when you talk to charismatic people?" },
-        { text: "The sound of laughter left my mouth for the first time in a long time. I suppose people really are drawn to charismatic people.<br><br>It felt wrong to laugh, but if I could, I would have kept laughing like it was my last." }
-    ],
-    "Bonzo": [
-        { text: "A happy-go-lucky trainer who enjoys battling." },
-        { text: "Sometimes I wonder if he would fit in nicely with us at Shaper. He reminds me of some of my former colleagues, though he does say he doesn't really care much about academies and such. <br><br>Sometimes whenever I look at him, a part of my being is filled with <b>envy</b>." }
-    ],
-    "Omar": [
-        { text: "Not much I can say, we went to the same academy together." },
-        { text: "Despite putting on quite the tough front, fear is still instilled to the heart of man. I do not blame him, but I do feel sorry for taking it as a joke when the incident happened. I wonder if things would be different if I acted more empathetic?" }
-    ]
-};
+const redirectUrl = "https://www.youtube.com/watch?v=6S9qxxgI60c"; 
 
-function drawChains() {
-svgCanvas.innerHTML = '';
-const heartRect = heart.getBoundingClientRect();
-const heartCenter = {
-    x: heartRect.left + heartRect.width / 2,
-    y: heartRect.top + heartRect.height / 2
-};
+document.body.addEventListener("click", () => {
+    if (isTyping) return;
 
-nodes.forEach(node => {
-    const nodeRect = node.getBoundingClientRect();
-    const nodeCenter = {
-    x: nodeRect.left + nodeRect.width / 2,
-    y: nodeRect.top + nodeRect.height / 2
-    };
+    const output = document.getElementById("output");
 
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", heartCenter.x);
-    line.setAttribute("y1", heartCenter.y);
-    line.setAttribute("x2", nodeCenter.x);
-    line.setAttribute("y2", nodeCenter.y);
-    line.setAttribute("class", "chain-line");
-    svgCanvas.appendChild(line);
-});
-}
-
-function renderLogs(title) {
-logHistory.innerHTML = '';
-const entries = nodeLogs[title] || [];
-
-if (entries.length === 0) {
-    logHistory.innerHTML = '<div class="log-entry"><div class="log-text">No logs recorded yet.</div></div>';
-    return;
-}
-
-entries.forEach(entry => {
-    const item = document.createElement('div');
-    item.className = 'log-entry';
-    item.innerHTML = `<div class="log-text">${entry.text}</div>`;
-    logHistory.appendChild(item);
-});
-
-logHistory.scrollTop = 0;
-}
-
-document.addEventListener('mousemove', (e) => {
-const mouseX = (e.clientX - window.innerWidth / 2) / 25;
-const mouseY = (e.clientY - window.innerHeight / 2) / 25;
-
-nodes.forEach((node, index) => {
-    const dir = nodeDirections[index % nodeDirections.length];
-    
-    const moveX = mouseX * dir.x;
-    const moveY = mouseY * dir.y;
-
-    node.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
-});
-
-drawChains();
-});
-
-heart.addEventListener('click', (e) => {
-    e.stopPropagation();
-    
-    const activeTitle = heart.getAttribute('data-title');
-    const newBg = heart.getAttribute('data-bg');
-
-    document.body.style.backgroundColor = newBg;
-    logTitle.textContent = activeTitle;
-    renderLogs(activeTitle);
-    drawer.classList.add('active');
-});
-
-nodes.forEach(node => {
-node.addEventListener('click', (e) => {
-    e.stopPropagation();
-    
-    const activeTitle = node.getAttribute('data-title');
-    const newBg = node.getAttribute('data-bg');
-
-    document.body.style.backgroundColor = newBg;
-    logTitle.textContent = activeTitle;
-    renderLogs(activeTitle);
-    drawer.classList.add('active');
-});
-});
-
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.node') && !e.target.closest('#heart') && !e.target.closest('.log-drawer')) {
-    drawer.classList.remove('active');
-    document.body.style.backgroundColor = '#121212';
+    if (currentIndex >= lines.length) {
+        window.location.href = redirectUrl;
+        return;
     }
-});
 
-drawChains();
-window.addEventListener('resize', drawChains);
+    if (activeCursor) {
+        activeCursor.remove();
+    }
 
-window.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
+    const lineText = lines[currentIndex];
+    const isLastLine = (currentIndex === lines.length - 1);
+    currentIndex++;
+
+    const lineElement = document.createElement("div");
+    lineElement.className = "line";
+    
+    const textSpan = document.createElement("span");
+    textSpan.className = "text-gold";
+    
+    activeCursor = document.createElement("span");
+    activeCursor.className = "cursor";
+    activeCursor.textContent = "█";
+    
+    lineElement.appendChild(textSpan);
+    lineElement.appendChild(activeCursor);
+    output.appendChild(lineElement);
+
+    isTyping = true;
+    let charIndex = 0;
+    let inShakeTag = false;
+
+    const interval = setInterval(() => {
+        if (lineText.slice(charIndex).startsWith("<shake>")) {
+            inShakeTag = true;
+            charIndex += 7;
+        } else if (lineText.slice(charIndex).startsWith("</shake>")) {
+            inShakeTag = false;
+            charIndex += 8;
+        }
+
+        if (charIndex < lineText.length) {
+            const char = lineText[charIndex];
+
+            if (inShakeTag) {
+                const charSpan = document.createElement("span");
+                if (char === " ") {
+                    charSpan.className = "shaky-char space";
+                    charSpan.innerHTML = "&nbsp;";
+                } else {
+                    charSpan.className = "shaky-char";
+                    charSpan.textContent = char;
+                    charSpan.style.animationDelay = `${(Math.random() * -0.2).toFixed(2)}s`;
+                    charSpan.style.animationDuration = `${(0.08 + Math.random() * 0.08).toFixed(2)}s`;
+                }
+                textSpan.appendChild(charSpan);
+            } else {
+                textSpan.appendChild(document.createTextNode(char));
+            }
+
+            charIndex++;
+        }
+
+        if (charIndex >= lineText.length) {
+            clearInterval(interval);
+            isTyping = false;
+            window.scrollTo(0, document.body.scrollHeight);
+
+            if (isLastLine) {
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 1500);
+            }
+        }
+    }, 50);
 });
