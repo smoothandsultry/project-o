@@ -15,17 +15,17 @@ container.addEventListener('mousemove', (e) => {
     image.style.maskPosition = maskPos;
 });
 
-// container.addEventListener('click', () => {
-//     lightOn =! lightOn;
+container.addEventListener('click', () => {
+    lightOn =! lightOn;
 
-//     image.style.opacity = lightOn ? '1':'0';
-//     container.classList.toggle('active', lightOn);
+    image.style.opacity = lightOn ? '1':'0';
+    container.classList.toggle('active', lightOn);
 
-//     const lightSound = lightOn ? on : off;
+    const lightSound = lightOn ? on : off;
 
-//     lightSound.currentTime = 0;
-//     lightSound.play();
-// });
+    lightSound.currentTime = 0;
+    lightSound.play();
+});
 
 document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
